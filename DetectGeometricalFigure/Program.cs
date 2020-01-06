@@ -7,13 +7,13 @@ namespace DetectGeometricalFigure
 {
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
             string arg;
             List<float> farg = new List<float>();
             Console.WriteLine("Wprowadz boki figury (min 3 - max 4) odzielone jedna spacja:");
             arg = Console.ReadLine();
-            string[] sarg = ValidateInput(arg);
+            string[] sarg = ValidateInput(args);
             farg = GetFloats(sarg).ToList();
             var checksList = new List<Task>();
             var checkTriangle = CheckTriangle(farg);
@@ -34,9 +34,9 @@ namespace DetectGeometricalFigure
             }
         }
 
-       static string[] ValidateInput(string arg)
+       static string[] ValidateInput(string[] arg)
         {
-            string[] result = arg.Split(" ").Length < 3 || arg.Split(" ").Length > 4 ? null : arg.Split(" ");
+            string[] result = arg.Length < 3 || arg.Length > 4 ? null :arg;
             if (result == null)
             {
                 Console.WriteLine("Zła liczba boków - min 3 , max 4");
@@ -74,12 +74,12 @@ namespace DetectGeometricalFigure
                 {
                     float a = args[0], b = args[1], c = args[2];
 
-                    if ((a + b > c) || (a + c > b) || (b + c > a))
+                    if ((a + b > c) )
                     {
                         if ((a == b) && (a == c) && (b == c))
                             return "Można zbudować trójkąt równoramienny i równoboczny";
                         else if ((a == b) || (b == c) || (c == a))
-                            return "Można zbudować trójkąt równoboczny";
+                            return "Można zbudować trójkąt równoramienny";
 
                         return "Można zbudować trójkąt różnoramienny";
 
@@ -96,7 +96,7 @@ namespace DetectGeometricalFigure
         {
             return Task.Run(() =>
             {
-                if (args.Count == 4)
+                if (args.Count == 4 && args.Max()<=args.Sum()-args.Max())
                 {
                     string result = "";
                     float a = args[0], b = args[1], c = args[2], d = args[3];
