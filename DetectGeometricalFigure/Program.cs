@@ -25,9 +25,9 @@ namespace DetectGeometricalFigure
             else
             {
                 if (!String.IsNullOrEmpty(checkQuadrangle.Result))
-                    Console.Write(checkQuadrangle.Result+" ");
+                    Console.Write(checkQuadrangle.Result);
                 if (!String.IsNullOrEmpty(checkTriangle.Result))
-                    Console.Write(checkTriangle.Result + " ");
+                    Console.Write(checkTriangle.Result);
             }
         }
 
@@ -74,11 +74,11 @@ namespace DetectGeometricalFigure
                     if ((a + b > c) )
                     {
                         if ((a == b) && (a == c) && (b == c))
-                            return "trojkat rownoboczny";
+                            return "trojkat_rownoboczny";
                         else if ((a == b) || (b == c) || (c == a))
-                            return "trojkat rownoramienny";
+                            return "trojkat_rownoramienny";
 
-                        return "trojkat roznoramienny";
+                        return "trojkat_roznoramienny";
 
                     }
                     else
@@ -95,13 +95,12 @@ namespace DetectGeometricalFigure
             {
                 if (args.Count == 4 && args.Max()<=args.Sum()-args.Max())
                 {
-                    string result = "";
                     float a = args[0], b = args[1], c = args[2], d = args[3];
                     if (a == b && b == c && c == d)
-                        result += "kwadrat";
+                        return "kwadrat";
                     else if ((a == b && c == d) || (a == c && b == d) || (d == a && b == c))
-                        result += "prostokat";
-                    return result + "czworobok";
+                        return "prostokat";
+                    return "czworobok";
 
                 }
                 else
