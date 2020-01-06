@@ -9,10 +9,7 @@ namespace DetectGeometricalFigure
     {
         static void Main(string[] args)
         {
-            string arg;
             List<float> farg = new List<float>();
-            Console.WriteLine("Wprowadz boki figury (min 3 - max 4) odzielone jedna spacja:");
-            arg = Console.ReadLine();
             string[] sarg = ValidateInput(args);
             farg = GetFloats(sarg).ToList();
             var checksList = new List<Task>();
