@@ -36,13 +36,13 @@ namespace DetectGeometricalFigure
             string[] result = arg.Length < 3 || arg.Length > 4 ? null :arg;
             if (result == null)
             {
-                Console.WriteLine("Zła liczba boków - min 3 , max 4");
+                Console.WriteLine("nierozpoznano");
                 Environment.Exit(0);
             }
 
             if (result.Any(x => String.IsNullOrEmpty(x)))
             {
-                Console.WriteLine("Zły format danych");
+                Console.WriteLine("nierozpoznano");
                 Environment.Exit(0);
             }
             return result;
@@ -55,7 +55,7 @@ namespace DetectGeometricalFigure
                 float f;
                 if (!float.TryParse(s, out f))
                 {
-                    Console.WriteLine("Argumenty muszą być liczbami");
+                    Console.WriteLine("nierozpoznano");
                     Environment.Exit(0);
                 }
                 else
@@ -74,11 +74,11 @@ namespace DetectGeometricalFigure
                     if ((a + b > c) )
                     {
                         if ((a == b) && (a == c) && (b == c))
-                            return "Można zbudować trójkąt równoramienny i równoboczny";
+                            return "trojkat rownoboczny";
                         else if ((a == b) || (b == c) || (c == a))
-                            return "Można zbudować trójkąt równoramienny";
+                            return "trojkat rownoramienny";
 
-                        return "Można zbudować trójkąt różnoramienny";
+                        return "trojkat roznoramienny";
 
                     }
                     else
@@ -98,10 +98,10 @@ namespace DetectGeometricalFigure
                     string result = "";
                     float a = args[0], b = args[1], c = args[2], d = args[3];
                     if (a == b && b == c && c == d)
-                        result += "Można zbudować kwadrat i prostokąt";
+                        result += "kwadrat";
                     else if ((a == b && c == d) || (a == c && b == d) || (d == a && b == c))
-                        result += "Można zbudować prostokąt";
-                    return result + " Można zbudować czworobok";
+                        result += "prostokat";
+                    return result + "czworobok";
 
                 }
                 else
